@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React, { useState } from 'react';
+import LeftSidebar from './components/LeftSidebar/LeftSidebar';
+import MainContent from './components/MainContent/MainContent';
+import RightSidebar from './components/RightSidebar/RightSidebar';
+import Header from './components/Header';
+import './styles/App.css';
 
 function App() {
+  const [isLeftSidebarVisible, setIsLeftSidebarVisible] = useState(false);
+  const [isRightSidebarVisible, setIsRightSidebarVisible] = useState(false);
+
+  const toggleLeftSidebar = () => {
+    setIsLeftSidebarVisible((prev) => !prev);
+  };
+
+  const toggleRightSidebar = () => {
+    setIsRightSidebarVisible((prev) => !prev);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Header toggleLeftSidebar={toggleLeftSidebar} />
+      <div className="content">
+        <LeftSidebar isVisible={isLeftSidebarVisible} />
+        <MainContent
+          toggleRightSidebar={toggleRightSidebar}
+          isLeftSidebarVisible={isLeftSidebarVisible}
+        />
+        <RightSidebar isVisible={isRightSidebarVisible} />
+      </div>
     </div>
   );
 }

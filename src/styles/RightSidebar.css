@@ -1,0 +1,16 @@
+/* src/styles/RightSidebar.css */
+.right-sidebar {
+  width: 300px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background-color: #f8f9fa;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  transform: translateX(100%); /* Hide sidebar by moving it off screen */
+  transition: transform 0.3s ease-in-out;
+}
+
+.right-sidebar.visible {
+  transform: translateX(0); /* Show sidebar by moving it into view */
+}
