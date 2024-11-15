@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +69,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+=======
+# Plancio
+Plancio is a modern, user-friendly task management app designed to keep you organized and productive. Easily add, organize, and prioritize tasks with customizable workflows, reminders, and progress tracking. Accessible across devices, Plancio helps you stay focused and achieve your goals, whether managing personal tasks or planning team projects.
+>>>>>>> 4ad49055829266240d6514bda9e05573dd41ea96
