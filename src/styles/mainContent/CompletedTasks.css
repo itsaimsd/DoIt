@@ -1,0 +1,27 @@
+/* src/styles/CompletedTasks.css */
+
+.completed-tasks {
+    width: 100%;
+  }
+  
+  .completed-header {
+    font-weight: bold;
+    margin-top: 10px;
+    color: #666;
+  }
+  
+  .completed {
+    color: #aaa;
+    text-decoration: line-through;
+  }
+  .task-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .task-text {
+    flex-grow: 1;
+    margin-left: 8px;
+  }

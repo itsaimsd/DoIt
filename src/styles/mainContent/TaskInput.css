@@ -1,0 +1,69 @@
+/* src/styles/TaskInput.css */
+
+.task-input-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(100% - 40px);
+    max-width: 1200px;
+    margin: 0 20px;
+  }
+  
+  .todo-dropdown {
+    font-size: 13px;
+    color: #333;
+    margin-bottom: 8px;
+    align-self: flex-start;
+    cursor: pointer;
+  }
+  
+  .task-input-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(180deg, #f2fbf2 0%, #eaf7ea 100%);
+    border-radius: 8px;
+    min-height: 130px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  .task-input-field {
+    font-size: 12px;
+    color: #333;
+    width: 100%;
+    margin-top: -39px;
+    background: transparent;
+    border: none;
+    outline: none;
+    text-align: left;
+  }
+  
+  .task-icons {
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+  }
+  
+  .icon {
+    font-size: 20px;
+    color: #292929;
+  }
+  
+  .add-task-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: #c0d9c0;
+    color: #48b151;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  

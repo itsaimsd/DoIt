@@ -1,0 +1,27 @@
+/* src/styles/TaskList.css */
+
+.task-list {
+    width: 100%;
+  }
+  
+  .task-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .task-text {
+    flex-grow: 1;
+    margin-left: 8px;
+  }
+  
+  .task-text.favorite {
+    font-weight: bold;
+  }
+  
+  .star-icon {
+    cursor: pointer;
+    color: #ffc107;
+  }
+  

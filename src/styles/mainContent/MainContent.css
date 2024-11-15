@@ -1,0 +1,32 @@
+/* src/styles/MainContent.css */
+
+.main-content {
+    padding: 80px 24px 24px; /* Adjust padding to avoid overlap with the fixed header */
+    background-color: #f9f9f9;
+    transition: margin-left 0.3s ease; /* Smooth transition */
+    flex: 1; /* Allows main content to take up available space */
+    overflow-y: auto; /* Allow scrolling within the content if needed */
+    height: calc(
+      100vh - 80px
+    ); /* Adjust height to fit within viewport minus the header height */
+  }
+  
+  .main-content.shifted {
+    margin-left: 240px; /* Shift by the width of the LeftSidebar */
+  }
+  
+  .add-task-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-task-button:hover {
+    background-color: #45a049;
+  }
+  
