@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faSyncAlt, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import '../../../styles/mainContent/TaskInput.css';
 
-
 const TaskInput = ({ addTask }) => {
   const [taskText, setTaskText] = useState('');
   const [isInputVisible, setIsInputVisible] = useState(true);
