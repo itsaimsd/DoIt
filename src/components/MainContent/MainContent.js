@@ -3,7 +3,6 @@ import TaskInputSection from "./TaskInputSection/TaskInputSection";
 import "../../styles/mainContent/MainContent.css";
 
 function MainContent({
-  toggleRightSidebar,
   isLeftSidebarVisible,
   tasks,
   toggleComplete,
