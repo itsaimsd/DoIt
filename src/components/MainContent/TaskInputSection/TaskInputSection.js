@@ -10,6 +10,7 @@ const TaskInputSection = ({
   toggleComplete,
   toggleFavorite,
   addTask,
+  handleEditTask
 }) => {
   const incompleteTasks = tasks.filter((task) => !task.completed);
   const completedTasks = tasks.filter((task) => task.completed);
@@ -21,7 +22,9 @@ const TaskInputSection = ({
         tasks={incompleteTasks}
         toggleComplete={toggleComplete}
         toggleFavorite={toggleFavorite}
+        handleEditTask={handleEditTask} // Pass the handler here
       />
+
       <CompletedTasks tasks={completedTasks} toggleComplete={toggleComplete} />
     </div>
   );

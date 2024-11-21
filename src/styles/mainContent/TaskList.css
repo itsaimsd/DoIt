@@ -1,5 +1,4 @@
-/* src/styles/TaskList.css */
-
+/* Task List Styles */
 .task-list {
   width: 100%;
 }
@@ -20,7 +19,31 @@
   font-weight: bold;
 }
 
+/* Star Icon Styling */
 .star-icon {
   cursor: pointer;
   color: #ffc107;
+  transition: transform 0.2s ease; /* Add smooth hover effect */
+}
+
+.star-icon:hover {
+  transform: scale(1.2); /* Slightly enlarge on hover */
+}
+
+/* Edit Icon Styling */
+.edit-icon {
+  cursor: pointer;
+  color: #4caf50; /* Default blue color */
+  margin-left: 10px; /* Add spacing from the task text */
+  font-size: 16px; /* Adjust the size to fit better with the layout */
+  transition: transform 0.2s ease, color 0.2s ease; /* Smooth hover effects */
+}
+
+.edit-icon:hover {
+  transform: scale(1.2); /* Slightly enlarge on hover */
+  color: #16d11c; /* Darker blue for hover effect */
+}
+
+.edit-icon:active {
+  transform: scale(1); /* Reset to normal size on click */
 }

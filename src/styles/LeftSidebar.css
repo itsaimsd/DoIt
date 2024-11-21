@@ -2,7 +2,7 @@
 
 /* General Left Sidebar styles */
 .left-sidebar {
-  width: 200px;
+  width: 245px;
   background-color: #f1f5f1;
   transition: transform 0.3s ease;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
@@ -13,6 +13,7 @@
   left: 0;
   transform: translateX(-100%);
   overflow-y: auto;
+  margin-top: 70px;
 }
 
 .left-sidebar.visible {
@@ -23,6 +24,7 @@
 .profile-section {
   text-align: center;
   margin-top: 50px;
+  margin-top: -15px;
 }
 
 .profile-image {

@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useState } from "react";
 import LeftSidebar from "./components/LeftSidebar/LeftSidebar";
 import MainContent from "./components/MainContent/MainContent";
@@ -11,6 +10,7 @@ function App() {
   const [isRightSidebarVisible, setIsRightSidebarVisible] = useState(false);
   const [activeTab, setActiveTab] = useState("Today"); // Tracks which tab is active
   const [tasks, setTasks] = useState([]); // Holds all tasks
+  const [editingTask, setEditingTask] = useState(null); // Task being edited
 
   // Toggle the visibility of sidebars
   const toggleLeftSidebar = () => setIsLeftSidebarVisible((prev) => !prev);
@@ -42,6 +42,21 @@ function App() {
     );
   };
 
+  // Open Right Sidebar for editing a task
+  const handleEditTask = (task) => {
+    setEditingTask(task); // Set the task to be edited
+    setIsRightSidebarVisible(true); // Open the sidebar
+  };
+
+  // Update a task's text
+  const updateTaskText = (id, newText) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, text: newText } : task
+      )
+    );
+  };
+
   return (
     <div className="app">
       <Header toggleLeftSidebar={toggleLeftSidebar} />
@@ -56,13 +71,21 @@ function App() {
         <MainContent
           toggleRightSidebar={toggleRightSidebar}
           isLeftSidebarVisible={isLeftSidebarVisible}
+          isRightSidebarVisible={isRightSidebarVisible}
           tasks={tasks}
           toggleComplete={toggleComplete}
           toggleFavorite={toggleFavorite}
           addTask={addTask}
           activeTab={activeTab}
+          updateTaskText={updateTaskText}
+          handleEditTask={handleEditTask} // Pass the handler
         />
-        <RightSidebar isVisible={isRightSidebarVisible} />
+        <RightSidebar
+          isVisible={isRightSidebarVisible}
+          task={editingTask} // Pass the task to be edited
+          updateTaskText={updateTaskText}
+          closeSidebar={() => setIsRightSidebarVisible(false)} // Close handler
+        />
       </div>
     </div>
   );
