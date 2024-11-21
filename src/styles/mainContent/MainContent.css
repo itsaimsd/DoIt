@@ -1,4 +1,5 @@
 /* src/styles/MainContent.css */
+
 /* Reset for body and html */
 html,
 body {
@@ -11,6 +12,7 @@ body {
 * {
   box-sizing: border-box; /* Include padding/border in element size */
 }
+
 .main-content {
   padding: 80px 24px 24px; /* Adjust padding to avoid overlap with the fixed header */
   background-color: #f9f9f9;
