@@ -1,0 +1,21 @@
+.task-controls {
+  border-bottom: 1px solid #ddd; /* Adds a light gray line */
+  padding-bottom: 10px; /* Optional: Adds some space between the task content and the line */
+ margin-top: -30px;
+}
+
+.task-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.checkbox {
+  margin-right: 10px;
+}
+
+.star-icon {
+  cursor: pointer;
+  margin-left: 10px;
+}

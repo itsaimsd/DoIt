@@ -36,7 +36,9 @@
   color: #4caf50; /* Default blue color */
   margin-left: 10px; /* Add spacing from the task text */
   font-size: 16px; /* Adjust the size to fit better with the layout */
-  transition: transform 0.2s ease, color 0.2s ease; /* Smooth hover effects */
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease; /* Smooth hover effects */
 }
 
 .edit-icon:hover {

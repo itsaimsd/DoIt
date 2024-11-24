@@ -1,7 +1,9 @@
 /* src/styles/LeftSidebar.css */
 
 /* General Left Sidebar styles */
+
 .left-sidebar {
+
   width: 245px;
   background-color: #f1f5f1;
   transition: transform 0.3s ease;

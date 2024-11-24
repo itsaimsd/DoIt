@@ -10,7 +10,7 @@ const TaskInputSection = ({
   toggleComplete,
   toggleFavorite,
   addTask,
-  handleEditTask
+  handleEditTask,
 }) => {
   const incompleteTasks = tasks.filter((task) => !task.completed);
   const completedTasks = tasks.filter((task) => task.completed);

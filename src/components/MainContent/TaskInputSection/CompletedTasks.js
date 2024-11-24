@@ -1,5 +1,3 @@
-
-
 // src/components/MainContent/TaskInputSection/CompletedTasks.js
 import React from "react";
 import "../../../styles/mainContent/CompletedTasks.css";

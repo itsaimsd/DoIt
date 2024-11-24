@@ -1,45 +1,37 @@
-import React, { useState, useEffect } from "react";
-import "../../styles/RightSidebar.css";
+import React from "react";
+import TaskControls from "./TaskControls"; // Import TaskControls
+import "../../styles/rightsidebar/RightSidebar.css";
+import Footer from "./Footer"; // Import Footer
 
-const RightSidebar = ({ isVisible, task, updateTaskText, closeSidebar }) => {
-  const [editedText, setEditedText] = useState("");
-
-  useEffect(() => {
-    if (task) {
-      setEditedText(task.text);
-    }
-  }, [task]);
-
-  const handleSave = () => {
-    if (task && editedText.trim()) {
-      updateTaskText(task.id, editedText); // Save the updated text
-      closeSidebar(); // Close the sidebar
-    }
-  };
-
-  // Ensure the sidebar doesn't render if it's not visible or no task is selected
-  if (!task) return null;
-
+const RightSidebar = ({
+  isVisible,
+  task,
+  toggleComplete,
+  toggleFavorite,
+  closeSidebar,
+  handleDelete,
+}) => {
   return (
     <div className={`right-sidebar ${isVisible ? "open" : ""}`}>
-      <div className="sidebar-header">
-        <h2>Edit Task</h2>
-        <button className="close-button" onClick={closeSidebar}>
-          Close
-        </button>
-      </div>
       <div className="sidebar-content">
-        <label>Edit Task Text:</label>
-        <input
-          type="text"
-          value={editedText}
-          onChange={(e) => setEditedText(e.target.value)}
-          className="task-edit-input"
-        />
-        <button className="save-button" onClick={handleSave}>
-          Save
-        </button>
+        {/* Task Controls: Checkbox and Star */}
+        {task && (
+          <TaskControls
+            isCompleted={task.completed}
+            toggleComplete={toggleComplete}
+            isImportant={task.important}
+            task={task}
+            toggleFavorite={toggleFavorite}
+          />
+        )}
       </div>
+
+      {/* Footer with Save and Delete */}
+      <Footer
+        task={task}
+        closeSidebar={closeSidebar}
+        handleDelete={handleDelete} // Pass handleDelete to Footer
+      />
     </div>
   );
 };

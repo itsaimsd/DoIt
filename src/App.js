@@ -1,4 +1,116 @@
-import React, { useState } from "react";
+// import React, { useState, useEffect } from "react";
+// import LeftSidebar from "./components/LeftSidebar/LeftSidebar";
+// import MainContent from "./components/MainContent/MainContent";
+// import RightSidebar from "./components/RightSidebar/RightSidebar";
+// import Header from "./components/Header";
+// import "./styles/App.css";
+
+// function App() {
+//   const [isLeftSidebarVisible, setIsLeftSidebarVisible] = useState(false);
+//   const [isRightSidebarVisible, setIsRightSidebarVisible] = useState(false);
+//   const [activeTab, setActiveTab] = useState("Today");
+
+//   // Load tasks from localStorage, if they exist
+//   const [tasks, setTasks] = useState(() => {
+//     const savedTasks = localStorage.getItem("tasks");
+//     return savedTasks ? JSON.parse(savedTasks) : []; // Parse tasks from localStorage if available
+//   });
+
+//   const [editingTask, setEditingTask] = useState(null);
+
+//   // Save tasks to localStorage whenever the tasks array changes
+//   useEffect(() => {
+//     localStorage.setItem("tasks", JSON.stringify(tasks)); // Convert tasks to string and save
+//   }, [tasks]);
+
+//   const toggleLeftSidebar = () => setIsLeftSidebarVisible((prev) => !prev);
+
+//   // Add a new task
+//   const addTask = (taskText) => {
+//     setTasks([
+//       ...tasks,
+//       { id: Date.now(), text: taskText, completed: false, important: false },
+//     ]);
+//   };
+
+//   // Toggle the "completed" state of a task
+//   const toggleComplete = (id) => {
+//     setTasks(
+//       tasks.map((task) =>
+//         task.id === id ? { ...task, completed: !task.completed } : task
+//       )
+//     );
+//   };
+
+//   const toggleFavorite = (id) => {
+//     setTasks(
+//       tasks.map((task) =>
+//         task.id === id ? { ...task, important: !task.important } : task
+//       )
+//     );
+//   };
+
+//   // Handle task deletion
+//   const handleDelete = (id) => {
+//     setTasks(tasks.filter((task) => task.id !== id));
+//   };
+
+//   // Open Right Sidebar for editing a task
+//   const handleEditTask = (task) => {
+//     setEditingTask(task);
+//     setIsRightSidebarVisible(true);
+//   };
+
+//   return (
+//     <div className="app">
+//       <Header toggleLeftSidebar={toggleLeftSidebar} />
+//       <div className="content">
+//         <LeftSidebar
+//           isVisible={isLeftSidebarVisible}
+//           activeTab={activeTab}
+//           setActiveTab={setActiveTab}
+//           tasks={tasks}
+//         />
+//         <MainContent
+//           isLeftSidebarVisible={isLeftSidebarVisible}
+//           isRightSidebarVisible={isRightSidebarVisible}
+//           tasks={tasks}
+//           toggleComplete={toggleComplete}
+//           toggleFavorite={toggleFavorite}
+//           addTask={addTask}
+//           activeTab={activeTab}
+//           handleEditTask={handleEditTask}
+//         />
+//         <RightSidebar
+//           isVisible={isRightSidebarVisible}
+//           task={editingTask}
+//           toggleComplete={toggleComplete}
+//           toggleFavorite={toggleFavorite}
+//           closeSidebar={() => setIsRightSidebarVisible(false)}
+//           handleDelete={handleDelete} // Pass handleDelete to RightSidebar
+//         />
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import React, { useState, useEffect } from "react";
 import LeftSidebar from "./components/LeftSidebar/LeftSidebar";
 import MainContent from "./components/MainContent/MainContent";
 import RightSidebar from "./components/RightSidebar/RightSidebar";
@@ -8,15 +120,23 @@ import "./styles/App.css";
 function App() {
   const [isLeftSidebarVisible, setIsLeftSidebarVisible] = useState(false);
   const [isRightSidebarVisible, setIsRightSidebarVisible] = useState(false);
-  const [activeTab, setActiveTab] = useState("Today"); // Tracks which tab is active
-  const [tasks, setTasks] = useState([]); // Holds all tasks
-  const [editingTask, setEditingTask] = useState(null); // Task being edited
+  const [activeTab, setActiveTab] = useState("Today");
 
-  // Toggle the visibility of sidebars
+  // Load tasks from localStorage, if they exist
+  const [tasks, setTasks] = useState(() => {
+    const savedTasks = localStorage.getItem("tasks");
+    return savedTasks ? JSON.parse(savedTasks) : [];
+  });
+
+  const [editingTask, setEditingTask] = useState(null);
+  const [notification, setNotification] = useState(null);  // State to manage notification
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks)); // Save tasks to localStorage
+  }, [tasks]);
+
   const toggleLeftSidebar = () => setIsLeftSidebarVisible((prev) => !prev);
-  const toggleRightSidebar = () => setIsRightSidebarVisible((prev) => !prev);
 
-  // Add a new task
   const addTask = (taskText) => {
     setTasks([
       ...tasks,
@@ -24,7 +144,6 @@ function App() {
     ]);
   };
 
-  // Toggle the "completed" state of a task
   const toggleComplete = (id) => {
     setTasks(
       tasks.map((task) =>
@@ -33,7 +152,6 @@ function App() {
     );
   };
 
-  // Toggle the "important" state of a task
   const toggleFavorite = (id) => {
     setTasks(
       tasks.map((task) =>
@@ -42,19 +160,20 @@ function App() {
     );
   };
 
-  // Open Right Sidebar for editing a task
-  const handleEditTask = (task) => {
-    setEditingTask(task); // Set the task to be edited
-    setIsRightSidebarVisible(true); // Open the sidebar
+  // Handle task deletion and show notification
+  const handleDelete = (id, taskName) => {
+    setTasks(tasks.filter((task) => task.id !== id)); // Delete task
+    setNotification(`Your task "${taskName}" has been deleted`); // Show notification
+    setIsRightSidebarVisible(false); // Collapse the RightSidebar
   };
 
-  // Update a task's text
-  const updateTaskText = (id, newText) => {
-    setTasks(
-      tasks.map((task) =>
-        task.id === id ? { ...task, text: newText } : task
-      )
-    );
+  const handleEditTask = (task) => {
+    setEditingTask(task);
+    setIsRightSidebarVisible(true);
+  };
+
+  const handleOkNotification = () => {
+    setNotification(null); // Hide the notification
   };
 
   return (
@@ -65,11 +184,9 @@ function App() {
           isVisible={isLeftSidebarVisible}
           activeTab={activeTab}
           setActiveTab={setActiveTab}
-          tasks={tasks} // Pass tasks as a prop
+          tasks={tasks}
         />
-
         <MainContent
-          toggleRightSidebar={toggleRightSidebar}
           isLeftSidebarVisible={isLeftSidebarVisible}
           isRightSidebarVisible={isRightSidebarVisible}
           tasks={tasks}
@@ -77,16 +194,25 @@ function App() {
           toggleFavorite={toggleFavorite}
           addTask={addTask}
           activeTab={activeTab}
-          updateTaskText={updateTaskText}
-          handleEditTask={handleEditTask} // Pass the handler
+          handleEditTask={handleEditTask}
         />
         <RightSidebar
           isVisible={isRightSidebarVisible}
-          task={editingTask} // Pass the task to be edited
-          updateTaskText={updateTaskText}
-          closeSidebar={() => setIsRightSidebarVisible(false)} // Close handler
+          task={editingTask}
+          toggleComplete={toggleComplete}
+          toggleFavorite={toggleFavorite}
+          closeSidebar={() => setIsRightSidebarVisible(false)}
+          handleDelete={handleDelete} // Pass handleDelete to RightSidebar
         />
       </div>
+
+      {/* Notification */}
+      {notification && (
+        <div className="notification">
+          <p>{notification}</p>
+          <button onClick={handleOkNotification}>OK</button>
+        </div>
+      )}
     </div>
   );
 }

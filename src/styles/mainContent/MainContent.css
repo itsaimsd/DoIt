@@ -1,6 +1,5 @@
 /* src/styles/MainContent.css */
 
-/* Reset for body and html */
 html,
 body {
   margin: 0;
@@ -24,7 +23,7 @@ body {
   height: calc(
     100vh - 60px
   ); /* Adjust height to fit within viewport minus the header height */
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 
 .main-content.shifted {
