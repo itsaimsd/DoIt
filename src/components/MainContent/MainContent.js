@@ -1,5 +1,6 @@
 import React from "react";
 import TaskInputSection from "./TaskInputSection/TaskInputSection";
+import PropTypes from "prop-types";
 import "../../styles/mainContent/MainContent.css";
 
 function MainContent({
@@ -14,12 +15,13 @@ function MainContent({
 }) {
   const filteredTasks =
     activeTab === "All Tasks"
-      ? tasks
+      ? tasks // Show all tasks
       : activeTab === "Today"
-      ? tasks // Implement "today" filtering logic if necessary
-      : activeTab === "Important"
-      ? tasks.filter((task) => task.important)
-      : tasks; // Default fallback for other tabs
+        ? tasks.filter((task) => !task.completed) // Show incomplete tasks
+        // ? tasks.filter((task) => !task.completed) 
+        : activeTab === "Important"
+          ? tasks.filter((task) => task.important) // Show only important tasks
+          : tasks; // Default fallback for other tabs
 
   return (
     <div
@@ -37,5 +39,22 @@ function MainContent({
     </div>
   );
 }
+
+MainContent.propTypes = {
+  isLeftSidebarVisible: PropTypes.bool.isRequired,
+  isRightSidebarVisible: PropTypes.bool.isRequired,
+  tasks: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      text: PropTypes.string.isRequired,
+      completed: PropTypes.bool.isRequired,
+      important: PropTypes.bool.isRequired,
+    })
+  ).isRequired,
+  toggleComplete: PropTypes.func.isRequired,
+  toggleFavorite: PropTypes.func.isRequired,
+  addTask: PropTypes.func.isRequired,
+  handleEditTask: PropTypes.func.isRequired,
+};
 
 export default MainContent;

@@ -1,8 +1,21 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faTrash } from "@fortawesome/free-solid-svg-icons";
+import "../../../styles/rightsidebar/Footer.css";
 
-const Footer = ({ task, closeSidebar, handleDelete }) => {
+const Footer = ({
+  task,
+  closeSidebar,
+  handleDelete,
+  updateTask,
+  handleSaveNotification,
+}) => {
+  const handleSave = () => {
+    updateTask(task.id, task);
+    handleSaveNotification("Task saved successfully!"); // Show notification
+    closeSidebar();
+  };
+
   return (
     <div className="sidebar-footer">
       <div className="footer-content">
@@ -21,7 +34,9 @@ const Footer = ({ task, closeSidebar, handleDelete }) => {
 
       {/* Save Button */}
       <div className="save-footer">
-        <button className="save-button">Save</button>
+        <button className="save-button" onClick={handleSave}>
+          Save
+        </button>
       </div>
     </div>
   );

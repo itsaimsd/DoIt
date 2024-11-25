@@ -1,0 +1,25 @@
+.task-notes {
+  margin-bottom: 15px;
+}
+
+.task-notes label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.task-notes textarea {
+  width: 100%;
+  font-size: 14px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: none;
+  height: 80px;
+}
+
+.task-notes textarea:focus {
+  border-color: #4caf50;
+  outline: none;
+}

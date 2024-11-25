@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import LeftSidebar from "./components/LeftSidebar/LeftSidebar";
 import MainContent from "./components/MainContent/MainContent";
 import RightSidebar from "./components/RightSidebar/RightSidebar";
 import Header from "./components/Header";
+import { RingtoneAPI } from "./utils/RingtoneAPI"; // Import RingtoneAPI
 import "./styles/App.css";
 
 function App() {
@@ -10,18 +11,30 @@ function App() {
   const [isRightSidebarVisible, setIsRightSidebarVisible] = useState(false);
   const [activeTab, setActiveTab] = useState("Today");
 
-  // Load tasks from localStorage, if they exist
   const [tasks, setTasks] = useState(() => {
-    const savedTasks = localStorage.getItem("tasks");
-    return savedTasks ? JSON.parse(savedTasks) : [];
+    try {
+      const savedTasks = localStorage.getItem("tasks");
+      return savedTasks ? JSON.parse(savedTasks) : [];
+    } catch (error) {
+      console.error("Error loading tasks from localStorage:", error);
+      return [];
+    }
   });
 
   const [editingTask, setEditingTask] = useState(null);
-  const [notification, setNotification] = useState(null); // State to manage notification
+  const [notification, setNotification] = useState(null);
+  const ringtoneAPIRef = useRef(new RingtoneAPI()); // Initialize RingtoneAPI
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks)); // Save tasks to localStorage
   }, [tasks]);
+
+  useEffect(() => {
+    if (notification) {
+      const timeout = setTimeout(() => setNotification(null), 3000);
+      return () => clearTimeout(timeout);
+    }
+  }, [notification]);
 
   const toggleLeftSidebar = () => setIsLeftSidebarVisible((prev) => !prev);
 
@@ -48,11 +61,10 @@ function App() {
     );
   };
 
-  // Handle task deletion and show notification
   const handleDelete = (id, taskName) => {
-    setTasks(tasks.filter((task) => task.id !== id)); // Delete task
-    setNotification(`Your task "${taskName}" has been deleted`); // Show notification
-    setIsRightSidebarVisible(false); // Collapse the RightSidebar
+    setTasks(tasks.filter((task) => task.id !== id));
+    setNotification(`Your task "${taskName}" has been deleted`);
+    setIsRightSidebarVisible(false);
   };
 
   const handleEditTask = (task) => {
@@ -61,7 +73,25 @@ function App() {
   };
 
   const handleOkNotification = () => {
-    setNotification(null); // Hide the notification
+    setNotification(null);
+  };
+
+  const updateTask = (taskId, updatedData) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === taskId ? { ...task, ...updatedData } : task
+      )
+    );
+  };
+
+  const handleSaveNotification = (message) => {
+    setNotification(message);
+  };
+
+  const playReminderRingtone = () => {
+    ringtoneAPIRef.current.initializeAudio();
+    ringtoneAPIRef.current.playRingtone(5); // Play ringtone for 5 seconds
+    setNotification("Reminder Alert: Time to act!"); // Show notification
   };
 
   return (
@@ -86,15 +116,17 @@ function App() {
         />
         <RightSidebar
           isVisible={isRightSidebarVisible}
-          task={editingTask}
+          task={tasks.find((task) => task.id === editingTask?.id)}
           toggleComplete={toggleComplete}
           toggleFavorite={toggleFavorite}
           closeSidebar={() => setIsRightSidebarVisible(false)}
-          handleDelete={handleDelete} // Pass handleDelete to RightSidebar
+          handleDelete={handleDelete}
+          updateTask={updateTask}
+          handleSaveNotification={handleSaveNotification}
+          playReminderRingtone={playReminderRingtone} // Pass ringtone handler
         />
       </div>
 
-      {/* Notification */}
       {notification && (
         <div className="notification">
           <p>{notification}</p>

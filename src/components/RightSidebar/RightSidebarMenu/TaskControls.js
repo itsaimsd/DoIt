@@ -4,7 +4,7 @@ import {
   faStar as solidStar,
   faStar as regularStar,
 } from "@fortawesome/free-solid-svg-icons";
-import "../../styles/rightsidebar/TaskControls.css";
+import "../../../styles/rightsidebar/TaskControls.css";
 
 const TaskControls = ({
   isCompleted,

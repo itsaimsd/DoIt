@@ -1,47 +1,88 @@
-/* src/styles/App.css */
+/* Import Roboto font globally */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+/* General Reset */
 * {
-  @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif; /* Set the default font */
 }
+
+/* App Container */
 .app {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100vh; /* Full viewport height */
   width: 100%;
-  font-family: "Roboto", sans-serif;
+  background-color: #f5f5f5; /* Light background for a professional look */
+  color: #333; /* Default text color */
 }
 
+/* Content Area */
 .content {
   display: flex;
-  flex: 1;
+  flex: 1; /* Fills remaining space */
   position: relative;
+  overflow: hidden; /* Prevents unwanted scrollbars */
 }
-/* Add this to your App.css */
+
+/* Notification Styling */
 .notification {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #36a24f;
-  padding: 20px;
-  border-radius: 5px;
-  font-size: 14px;
-  font-weight: bold;
-  color: white;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transform: translate(-50%, -50%); /* Ensures it is centered */
+  background-color: #28a745; /* Professional green for success notifications */
+  padding: 20px 30px; /* Balanced padding for better spacing */
+  border-radius: 10px; /* Softer corners */
+  font-size: 16px; /* Slightly larger font for readability */
+  font-weight: 500; /* Medium weight for professional typography */
+  color: #ffffff; /* Text color for contrast */
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow for modern look */
   text-align: center;
   z-index: 1000;
+  animation: fadeInOut 3s ease-in-out; /* Unified animation for fade in and out */
 }
 
+.notification.reminder {
+  background-color: #ffa726; /* Orange for reminders */
+}
+
+/* Notification Button */
 .notification button {
-  background-color: #0bb825;
-  color: white;
+  margin-top: 12px; /* Add space above the button */
+  background-color: #218838; /* Slightly darker green for the button */
+  color: #ffffff;
   border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
+  padding: 10px 20px; /* Larger padding for better click area */
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s ease; /* Smooth hover effect */
 }
 
 .notification button:hover {
-  background-color: #04b00d;
+  background-color: #19692c; /* Darker green on hover */
+}
+
+/* Animation for Notification */
+@keyframes fadeInOut {
+  0% {
+    opacity: 0; /* Fully transparent */
+    transform: translate(-50%, -60%); /* Slightly above center */
+  }
+  10% {
+    opacity: 1; /* Fully visible */
+    transform: translate(-50%, -50%); /* Perfectly centered */
+  }
+  90% {
+    opacity: 1; /* Stay fully visible */
+    transform: translate(-50%, -50%); /* Stay in center */
+  }
+  100% {
+    opacity: 0; /* Fade out */
+    transform: translate(-50%, -60%); /* Slightly above center again */
+  }
 }

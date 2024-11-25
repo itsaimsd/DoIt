@@ -1,0 +1,24 @@
+.task-due-date {
+    margin-bottom: 15px;
+  }
+  
+  .task-due-date label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  .task-due-date input {
+    width: 100%;
+    font-size: 14px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .task-due-date input:focus {
+    border-color: #4caf50;
+    outline: none;
+  }
+  

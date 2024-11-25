@@ -1,0 +1,95 @@
+.add-step {
+  background-color: #f1f5f1;
+  margin-top: -10px;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.step-input {
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: #fff;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.step-input:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 4px rgba(76, 175, 80, 0.5);
+  outline: none;
+}
+
+.add-step-button {
+  width: 23%; /* Full-width button */
+  padding: 10px;
+  margin-left: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
+}
+
+.add-step-button:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+.add-step-button:active {
+  transform: scale(0.95);
+}
+
+.steps-list {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.steps-list .checkbox {
+  cursor: pointer;
+}
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.step-item .step-text {
+  flex: 1;
+  font-size: 14px;
+}
+
+.step-item .step-text.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.delete-step {
+  background: none;
+  border: none;
+  color: #45a049;
+  font-size: 16px;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.delete-step:hover {
+  color: #0ebe17;
+  transform: scale(1.2);
+}
