@@ -1,5 +1,4 @@
-/* src/styles/mainContent/TaskInput.css */
-
+/* Task Input Section (adjusts position when sidebar is open) */
 .task-input-section {
   display: flex;
   flex-direction: column;
@@ -7,6 +6,12 @@
   width: calc(100% - 40px);
   max-width: 1200px;
   margin: 0 20px;
+  transition: transform 0.3s ease-in-out; /* Smooth transition when shifting */
+}
+
+/* If sidebar is open, move task input to the right */
+.task-input-section.shift-right {
+  transform: translateX(255px); /* Adjust based on sidebar width */
 }
 
 /* Night Mode Styling for Task Input */
@@ -20,6 +25,7 @@
   margin-bottom: 8px;
   align-self: flex-start;
   cursor: pointer;
+  margin-left: 40px;
 }
 
 /* Night Mode Styling for To-Do Dropdown */
@@ -30,7 +36,7 @@
 .task-input-container {
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 90%;
   padding: 16px;
   background: linear-gradient(180deg, #f2fbf2 0%, #eaf7ea 100%);
   border-radius: 8px;
