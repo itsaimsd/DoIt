@@ -16,7 +16,9 @@ body {
   padding: 80px 24px 24px;
   background-color: #f9f9f9;
   color: #333;
-  transition: margin-right 0.3s ease-in-out; /* Ensure smooth transition */
+  transition: 
+    margin-left 0.3s ease-in-out,
+    margin-right 0.3s ease-in-out;
   flex: 1;
   overflow-y: auto;
 }

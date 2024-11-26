@@ -1,6 +1,6 @@
 .right-sidebar {
-  margin-top: 70px;
-  width: 280px;
+  margin-top: 62px;
+  width: 286px;
   height: 100%;
   background-color: #ebf3eb;
   position: fixed;
@@ -10,20 +10,31 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Add opacity transition */
-  transform: translateX(100%); /* Start offscreen */
-  opacity: 0; /* Fully transparent by default */
-  visibility: hidden; /* Hide content when offscreen */
+  transition:
+    transform 0.3s ease-in-out,
+    opacity 0.3s ease-in-out;
+  transform: translateX(100%);
+  opacity: 0;
+  visibility: hidden; /* Ensure hidden when offscreen */
   z-index: 1000;
   overflow-y: auto;
 }
 
 .right-sidebar.open {
   transform: translateX(0); /* Slide into view */
-  opacity: 1; 
-  visibility: visible; /* Ensure content becomes interactable */
+  opacity: 1;
+  visibility: visible;
 }
 
+.right-sidebar.closing {
+  transform: translateX(100%);
+  opacity: 0; /* Fade out smoothly */
+  visibility: visible; /* Ensure visible until animation ends */
+}
+
+.right-sidebar.closing-hidden {
+  visibility: hidden; /* Finally hide after animation */
+}
 
 .right-sidebar::-webkit-scrollbar {
   width: 8px;
