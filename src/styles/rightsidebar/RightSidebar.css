@@ -1,5 +1,5 @@
 .right-sidebar {
-  margin-top: 62px;
+  margin-top: 61px;
   width: 286px;
   height: 100%;
   background-color: #ebf3eb;
@@ -15,42 +15,48 @@
     opacity 0.3s ease-in-out;
   transform: translateX(100%);
   opacity: 0;
-  visibility: hidden; /* Ensure hidden when offscreen */
+  visibility: hidden; /* Ensure it's hidden when offscreen */
   z-index: 1000;
   overflow-y: auto;
 }
 
+/* Animation for opening the sidebar */
 .right-sidebar.open {
-  transform: translateX(0); /* Slide into view */
+  transform: translateX(0); /* Slide in from the right */
   opacity: 1;
-  visibility: visible;
+  visibility: visible; /* Make the sidebar visible */
 }
 
+/* Animation for closing the sidebar */
 .right-sidebar.closing {
-  transform: translateX(100%);
-  opacity: 0; /* Fade out smoothly */
-  visibility: visible; /* Ensure visible until animation ends */
+  transform: translateX(100%); /* Slide out to the right */
+  opacity: 0;
+  visibility: visible; /* Ensure it stays visible during the closing animation */
 }
 
+/* Sidebar hidden after closing */
 .right-sidebar.closing-hidden {
-  visibility: hidden; /* Finally hide after animation */
+  visibility: hidden; /* Hide it after the animation completes */
 }
 
 .right-sidebar::-webkit-scrollbar {
   width: 8px;
 }
 
-.sidebar-header {
+/* Sidebar header styling */
+.sidebar-header { 
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+/* Sidebar content styling */
 .sidebar-content {
   margin-top: 20px;
   flex: 1;
 }
 
+/* Section styling within the sidebar */
 .section {
   margin-top: 16px;
   align-items: center;
@@ -63,6 +69,7 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for rows */
 }
 
+/* Styling for the toggle button */
 .toggle-button {
   display: flex;
   align-items: center;
@@ -84,6 +91,7 @@
   background-color: #ebf3eb;
 }
 
+/* Animation for expandable sections */
 .expandable {
   overflow: hidden;
   max-height: 0;
@@ -93,7 +101,7 @@
 }
 
 .expandable.expanded {
-  max-height: 300px; /* Adjust this value based on content size */
+  max-height: 300px; /* Adjust based on content size */
   padding: 10px 16px;
 }
 
@@ -118,7 +126,7 @@
 /* Night mode for toggle button */
 .toggle-button.night-mode {
   background-color: #444; /* Match section background */
-  color: #ffffff; /* Light text for night mode */
+  color: #ffffff; /* Light text */
 }
 
 .toggle-button.night-mode:hover {

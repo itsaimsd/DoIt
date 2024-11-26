@@ -16,7 +16,7 @@ body {
   padding: 80px 24px 24px;
   background-color: #f9f9f9;
   color: #333;
-  transition: 
+  transition:
     margin-left 0.3s ease-in-out,
     margin-right 0.3s ease-in-out;
   flex: 1;
@@ -31,11 +31,11 @@ body {
 
 /* Adjust content layout when sidebars are visible */
 .main-content.shifted {
-  margin-left: 255px; /* Shift by the width of the LeftSidebar */
+  margin-left: 256px; /* Shift by the width of the LeftSidebar */
 }
 
 .main-content.shifted-left {
-  margin-right: 290px;
+  margin-right: 287px;
 }
 
 /* Add Task Button Styles */

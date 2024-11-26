@@ -1,7 +1,7 @@
 /* General Left Sidebar styles */
 .left-sidebar {
   width: 255px;
-  background-color: #f1f5f1; /* Light background color */
+  background-color: #f1f5f1;
   transition:
     transform 0.3s ease,
     background-color 0.3s ease,
@@ -14,7 +14,7 @@
   left: 0;
   transform: translateX(-100%);
   overflow-y: auto;
-  margin-top: 60px;
+  margin-top: 61px;
 }
 
 .left-sidebar.visible {
