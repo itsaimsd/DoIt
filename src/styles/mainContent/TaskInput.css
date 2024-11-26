@@ -24,8 +24,7 @@
   color: #333;
   margin-bottom: 8px;
   align-self: flex-start;
-  cursor: pointer;
-  margin-left: 40px;
+  cursor: pointer; 
 }
 
 /* Night Mode Styling for To-Do Dropdown */

@@ -9,7 +9,6 @@ import "./styles/App.css";
 function App() {
   const [isLeftSidebarVisible, setIsLeftSidebarVisible] = useState(false);
   const [isRightSidebarVisible, setIsRightSidebarVisible] = useState(false);
-  // const [isClosing, setIsClosing] = useState(false);
   const [activeTab, setActiveTab] = useState("Today");
   const [isNightMode, setIsNightMode] = useState(false); // Night mode state
 
@@ -76,17 +75,10 @@ function App() {
     setTimeout(() => setIsRightSidebarVisible(true), 50);
   };
   const openRightSidebar = () => {
-    setIsRightSidebarVisible(true);
-    // setIsClosing(false); // Ensure closing state is reset
+    setIsRightSidebarVisible(true); 
   };
 
-  // const closeRightSidebar = () => {
-  //   // setIsClosing(true); // Trigger the closing animation
-  //   setTimeout(() => {
-  //     setIsClosing(false); // Remove the closing class
-  //     setIsRightSidebarVisible(false); // Fully close the sidebar
-  //   }, 300); // Match the transition duration in CSS
-  // };
+ 
 
   const handleOkNotification = () => {
     setNotification(null);
@@ -147,8 +139,7 @@ function App() {
           updateTask={updateTask}
           handleSaveNotification={handleSaveNotification}
           playReminderRingtone={playReminderRingtone} // Pass ringtone handler
-          isNightMode={isNightMode}
-          // closeRightSidebar={closeRightSidebar}
+          isNightMode={isNightMode} 
         />
       </div>
 
