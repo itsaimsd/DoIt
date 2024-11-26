@@ -31,7 +31,7 @@
   background-color: #4caf50;
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 18px;
   font-size: 14px;
   cursor: pointer;
   transition:
@@ -92,4 +92,51 @@
 .delete-step:hover {
   color: #0ebe17;
   transform: scale(1.2);
+}
+
+/* Night Mode Styling for AddStep Component */
+.add-step.night-mode {
+  background-color: #3a3939; /* Dark background */
+  color: #ffffff; /* Light text */
+}
+
+/* Night Mode for Input Field */
+.step-input.night-mode {
+  background-color: #363333; /* Dark background */
+  color: #ffffff; /* Light text */
+  border-color: #555; /* Subtle border */
+}
+
+.step-input.night-mode:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 4px rgba(76, 175, 80, 0.5);
+  outline: none;
+}
+
+/* Night Mode for Add Button */
+.add-step-button.night-mode {
+  background-color: #4caf50; /* Same as light mode */
+  color: #ffffff; /* Ensure text remains white */
+}
+
+/* Night Mode for Step Items */
+.step-item.night-mode {
+  background-color: #555; /* Darker background */
+  border-color: #555; /* Subtle border */
+  color: #ffffff; /* Light text */
+}
+
+/* Night Mode for Step Text */
+.step-text.night-mode.completed {
+  color: #888; /* Dimmed text for completed items */
+  text-decoration: line-through;
+}
+
+/* Night Mode for Delete Button */
+.delete-step.night-mode {
+  color: #4caf50; /* Green for delete icon */
+}
+
+.delete-step.night-mode:hover {
+  color: #0ebe17; /* Brighter green on hover */
 }

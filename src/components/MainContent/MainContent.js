@@ -12,13 +12,13 @@ function MainContent({
   addTask,
   activeTab,
   handleEditTask,
+  isNightMode, // Accept the isNightMode prop
 }) {
   const filteredTasks =
     activeTab === "All Tasks"
       ? tasks // Show all tasks
       : activeTab === "Today"
         ? tasks.filter((task) => !task.completed) // Show incomplete tasks
-        // ? tasks.filter((task) => !task.completed) 
         : activeTab === "Important"
           ? tasks.filter((task) => task.important) // Show only important tasks
           : tasks; // Default fallback for other tabs
@@ -27,7 +27,7 @@ function MainContent({
     <div
       className={`main-content ${isLeftSidebarVisible ? "shifted" : ""} ${
         isRightSidebarVisible ? "shifted-left" : ""
-      }`}
+      } ${isNightMode ? "night-mode" : ""}`} // Add night-mode class
     >
       <TaskInputSection
         tasks={filteredTasks}
@@ -35,6 +35,7 @@ function MainContent({
         toggleFavorite={toggleFavorite}
         addTask={addTask}
         handleEditTask={handleEditTask} // Pass the handler
+        isNightMode={isNightMode}
       />
     </div>
   );
@@ -55,6 +56,7 @@ MainContent.propTypes = {
   toggleFavorite: PropTypes.func.isRequired,
   addTask: PropTypes.func.isRequired,
   handleEditTask: PropTypes.func.isRequired,
+  isNightMode: PropTypes.bool.isRequired, // Add this to PropTypes
 };
 
 export default MainContent;

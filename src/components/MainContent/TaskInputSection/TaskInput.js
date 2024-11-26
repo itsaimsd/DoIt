@@ -1,17 +1,21 @@
 // src/components/MainContent/TaskInputSection/TaskInput.js
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faSyncAlt, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
-import '../../../styles/mainContent/TaskInput.css';
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBell,
+  faSyncAlt,
+  faCalendarAlt,
+} from "@fortawesome/free-solid-svg-icons";
+import "../../../styles/mainContent/TaskInput.css";
 
-const TaskInput = ({ addTask }) => {
-  const [taskText, setTaskText] = useState('');
+const TaskInput = ({ addTask, isNightMode }) => {
+  const [taskText, setTaskText] = useState("");
   const [isInputVisible, setIsInputVisible] = useState(true);
 
   const handleAddTask = () => {
     if (taskText.trim()) {
       addTask(taskText);
-      setTaskText('');
+      setTaskText("");
     }
   };
 
@@ -20,12 +24,14 @@ const TaskInput = ({ addTask }) => {
   };
 
   return (
-    <div className="task-input-section">
+    <div className={`task-input-section ${isNightMode ? "night-mode" : ""}`}>
       <div className="todo-dropdown" onClick={toggleInputVisibility}>
-        To Do {isInputVisible ? '▼' : '►'}
+        To Do {isInputVisible ? "▼" : "►"}
       </div>
       {isInputVisible && (
-        <div className="task-input-container">
+        <div
+          className={`task-input-container ${isNightMode ? "night-mode" : ""}`}
+        >
           <input
             type="text"
             className="task-input-field"
@@ -40,7 +46,7 @@ const TaskInput = ({ addTask }) => {
           </div>
           <button className="add-task-button" onClick={handleAddTask}>
             ADD TASK
-          </button>
+          </button>{" "}
         </div>
       )}
     </div>

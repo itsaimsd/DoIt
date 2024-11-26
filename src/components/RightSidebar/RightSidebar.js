@@ -19,8 +19,9 @@ const RightSidebar = ({
   handleDelete,
   updateTask,
   handleSaveNotification,
+  isNightMode,
 }) => {
-  const [expandedSection, setExpandedSection] = useState(null); // Tracks the currently expanded section
+  const [expandedSection, setExpandedSection] = useState(null);
 
   const toggleSection = (sectionName) => {
     setExpandedSection((prev) => (prev === sectionName ? null : sectionName));
@@ -31,70 +32,62 @@ const RightSidebar = ({
   const [repeat, setRepeat] = useState(task?.repeat || "None");
   const [notes, setNotes] = useState(task?.notes || "");
 
+  const handleToggleFavorite = () => {
+    toggleFavorite(task.id);
+    handleSaveNotification(
+      task.important
+        ? `${task.text} has been removed from Important`
+        : `${task.text} has been set as Important`
+    );
+  };
+
   if (!task) return null;
 
   return (
-    <div className={`right-sidebar ${isVisible ? "open" : ""}`}>
+    <div
+      className={`right-sidebar ${isVisible ? "open" : ""} ${
+        isNightMode ? "night-mode" : ""
+      }`}
+    >
       <div className="sidebar-content">
         <TaskControls
           isCompleted={task.completed}
           toggleComplete={toggleComplete}
           isImportant={task.important}
           task={task}
-          toggleFavorite={toggleFavorite}
+          toggleFavorite={handleToggleFavorite}
         />
-        <div className="section">
+        <div className={`section ${isNightMode ? "night-mode" : ""}`}>
           <button
             onClick={() => toggleSection("steps")}
-            className="toggle-button"
+            className={`toggle-button ${isNightMode ? "night-mode" : ""}`}
           >
             {expandedSection === "steps" ? "Hide Steps" : "Add Steps"}
           </button>
           {expandedSection === "steps" && (
-            <div className="expandable expanded">
+            <div className={`expandable expanded ${isNightMode ? "night-mode" : ""}`}>
               <AddStep
-                steps={task.steps || []} // Pass the current task's steps
+                steps={task.steps || []}
                 setSteps={(newSteps) => {
-                  const updatedTask = { ...task, steps: newSteps }; // Update steps locally
-                  updateTask(task.id, updatedTask); // Call updateTask to save changes
+                  const updatedTask = { ...task, steps: newSteps };
+                  updateTask(task.id, updatedTask);
                 }}
-                updateTask={updateTask} // Pass updateTask directly
-                taskId={task.id}
-              />
-            </div>
-          )}
-        </div>
-        {/* Task Reminder Section */}
-        <div className="section">
-          <button
-            onClick={() => toggleSection("reminder")}
-            className="toggle-button"
-          >
-            {expandedSection === "reminder" ? "Hide Reminder" : "Set Reminder"}
-          </button>
-          {expandedSection === "reminder" && (
-            <div className="expandable expanded">
-              <TaskReminder
-                reminder={reminder}
-                setReminder={setReminder}
                 updateTask={updateTask}
                 taskId={task.id}
-                playReminderRingtone={playReminderRingtone} // Pass the function
+                isNightMode={isNightMode}
               />
             </div>
           )}
         </div>
-
-        {/* Task Due Date Section */}
-        <div className="section">
+        <div className={`section ${isNightMode ? "night-mode" : ""}`}>
           <button
             onClick={() => toggleSection("dueDate")}
-            className="toggle-button"
+            className={`toggle-button ${isNightMode ? "night-mode" : ""}`}
           >
             {expandedSection === "dueDate" ? "Hide Due Date" : "Add Due Date"}
           </button>
           {expandedSection === "dueDate" && (
-            <div className="expandable expanded">
+            <div className={`expandable expanded ${isNightMode ? "night-mode" : ""}`}>
               <TaskDueDate
                 dueDate={dueDate}
                 setDueDate={setDueDate}
@@ -104,17 +97,34 @@ const RightSidebar = ({
             </div>
           )}
         </div>
-
-        {/* Task Repeat Section */}
-        <div className="section">
+        <div className={`section ${isNightMode ? "night-mode" : ""}`}>
+          <button
+            onClick={() => toggleSection("reminder")}
+            className={`toggle-button ${isNightMode ? "night-mode" : ""}`}
+          >
+            {expandedSection === "reminder" ? "Hide Reminder" : "Set Reminder"}
+          </button>
+          {expandedSection === "reminder" && (
+            <div className={`expandable expanded ${isNightMode ? "night-mode" : ""}`}>
+              <TaskReminder
+                reminder={reminder}
+                setReminder={setReminder}
+                updateTask={updateTask}
+                taskId={task.id}
+                playReminderRingtone={playReminderRingtone}
+              />
+            </div>
+          )}
+        </div>
+        <div className={`section ${isNightMode ? "night-mode" : ""}`}>
           <button
             onClick={() => toggleSection("repeat")}
-            className="toggle-button"
+            className={`toggle-button ${isNightMode ? "night-mode" : ""}`}
           >
             {expandedSection === "repeat" ? "Hide Repeat" : "Set Repeat"}
           </button>
           {expandedSection === "repeat" && (
-            <div className="expandable expanded">
+            <div className={`expandable expanded ${isNightMode ? "night-mode" : ""}`}>
               <TaskRepeat
                 repeat={repeat}
                 setRepeat={setRepeat}
@@ -124,17 +134,15 @@ const RightSidebar = ({
             </div>
           )}
         </div>
-
-        {/* Task Notes Section */}
-        <div className="section">
+        <div className={`section ${isNightMode ? "night-mode" : ""}`}>
           <button
             onClick={() => toggleSection("notes")}
-            className="toggle-button"
+            className={`toggle-button ${isNightMode ? "night-mode" : ""}`}
           >
             {expandedSection === "notes" ? "Hide Notes" : "Add Notes"}
           </button>
           {expandedSection === "notes" && (
-            <div className="expandable expanded">
+            <div className={`expandable expanded ${isNightMode ? "night-mode" : ""}`}>
               <TaskNotes
                 notes={notes}
                 setNotes={setNotes}
@@ -169,6 +177,7 @@ RightSidebar.propTypes = {
   closeSidebar: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired,
   updateTask: PropTypes.func.isRequired,
+  isNightMode: PropTypes.bool.isRequired,
 };
 
 export default RightSidebar;

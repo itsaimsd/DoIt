@@ -19,3 +19,13 @@
   cursor: pointer;
   margin-left: 10px;
 }
+
+.star-icon {
+  cursor: pointer;
+  color: gold;
+  transition: color 0.3s ease;
+}
+
+.star-icon.important {
+  color: gray;
+}

@@ -10,16 +10,20 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease;
-  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Add opacity transition */
+  transform: translateX(100%); /* Start offscreen */
+  opacity: 0; /* Fully transparent by default */
+  visibility: hidden; /* Hide content when offscreen */
   z-index: 1000;
-  overflow-y: auto; /* Make the sidebar vertically scrollable */
-  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .right-sidebar.open {
-  transform: translateX(0);
+  transform: translateX(0); /* Slide into view */
+  opacity: 1; 
+  visibility: visible; /* Ensure content becomes interactable */
 }
+
 
 .right-sidebar::-webkit-scrollbar {
   width: 8px;
@@ -59,7 +63,6 @@
   font-size: 14px;
   font-weight: 500; /* Ensure consistent font weight */
   text-align: left; /* Align text to the left */
-  border-radius: 8px; /* Same rounded corners as .section */
   cursor: pointer;
   transition:
     background-color 0.3s ease,
@@ -86,4 +89,36 @@
 .expandable.collapsed {
   max-height: 0;
   padding: 0;
+}
+
+/* Night mode styles for Right Sidebar */
+.right-sidebar.night-mode {
+  background-color: #333; /* Dark background for night mode */
+  color: #ffffff; /* Light text for night mode */
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3); /* Slightly stronger shadow */
+}
+
+/* Night mode for sections */
+.section.night-mode {
+  background-color: #444; /* Darker section background */
+  color: #ffffff; /* Light text */
+}
+
+/* Night mode for toggle button */
+.toggle-button.night-mode {
+  background-color: #444; /* Match section background */
+  color: #ffffff; /* Light text for night mode */
+}
+
+.toggle-button.night-mode:hover {
+  background-color: #555; /* Slightly lighter on hover */
+}
+
+/* Scrollbar in night mode */
+.right-sidebar.night-mode::-webkit-scrollbar {
+  background-color: #444d56; /* Darker scrollbar background */
+}
+
+.right-sidebar.night-mode::-webkit-scrollbar-thumb {
+  background-color: #555; /* Darker scrollbar thumb */
 }

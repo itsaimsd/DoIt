@@ -13,19 +13,21 @@ body {
 }
 
 .main-content {
-  padding: 80px 24px 24px; /* Adjust padding to avoid overlap with the fixed header */
+  padding: 80px 24px 24px;
   background-color: #f9f9f9;
-  transition:
-    margin-left 0.3s ease,
-    margin-right 0.3s ease;
-  flex: 1; /* Allows main content to take up available space */
-  overflow-y: auto; /* Allow scrolling within the content if needed */
-  height: calc(
-    100vh - 60px
-  ); /* Adjust height to fit within viewport minus the header height */
+  color: #333;
+  transition: margin-right 0.3s ease-in-out; /* Ensure smooth transition */
+  flex: 1;
   overflow-y: auto;
 }
 
+/* Night Mode Styles for MainContent */
+.main-content.night-mode {
+  background-color: #2c2f33; /* Dark background for night mode */
+  color: #fff; /* Light text color for night mode */
+}
+
+/* Adjust content layout when sidebars are visible */
 .main-content.shifted {
   margin-left: 255px; /* Shift by the width of the LeftSidebar */
 }
@@ -34,6 +36,7 @@ body {
   margin-right: 290px;
 }
 
+/* Add Task Button Styles */
 .add-task-button {
   background-color: #4caf50;
   color: white;
@@ -47,4 +50,28 @@ body {
 
 .add-task-button:hover {
   background-color: #45a049;
+}
+
+/* Night Mode Styles for Add Task Button */
+.add-task-button.night-mode {
+  background-color: #6d6d6d; /* Dark button for night mode */
+  color: #fff; /* Light text for button */
+}
+
+.add-task-button.night-mode:hover {
+  background-color: #555; /* Darker button on hover */
+}
+
+/* Adjust styles for input and textarea in night mode */
+.main-content input,
+.main-content textarea {
+  /* Light input fields */
+  color: #333; /* Dark text for input fields */
+}
+
+/* Input fields in night mode */
+.main-content.night-mode input,
+.main-content.night-mode textarea {
+  background-color: #555; /* Dark input fields */
+  color: #fff; /* Light text for input fields */
 }

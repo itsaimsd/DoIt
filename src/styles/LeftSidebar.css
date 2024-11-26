@@ -1,11 +1,11 @@
-/* src/styles/LeftSidebar.css */
-
 /* General Left Sidebar styles */
-
 .left-sidebar {
   width: 245px;
-  background-color: #f1f5f1;
-  transition: transform 0.3s ease;
+  background-color: #f1f5f1; /* Light background color */
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease; /* Transition for night mode */
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   padding: 20px;
   height: 100vh;
@@ -21,7 +21,13 @@
   transform: translateX(0);
 }
 
-/* ProfileSection styles */
+/* Night Mode Styles */
+.left-sidebar.night-mode {
+  background-color: #333; /* Dark background for night mode */
+  color: #fff; /* Light text color */
+}
+
+/* Profile Section styles */
 .profile-section {
   text-align: center;
   margin-top: 50px;
@@ -37,9 +43,14 @@
 
 .profile-section h4 {
   font-size: 13px;
-  color: #333;
+  color: #333; /* Light color for night mode */
   font-weight: 600;
   margin-top: 10px;
+}
+
+/* Night mode specific styles for Profile Section */
+.left-sidebar.night-mode .profile-section h4 {
+  color: #fff; /* White text for profile section in night mode */
 }
 
 /* NavItem styles */
@@ -54,7 +65,7 @@
   align-items: center;
   padding: 12px;
   font-size: 13px;
-  color: #333;
+  color: #333; /* Light color */
   cursor: pointer;
   border-radius: 8px;
   transition:
@@ -68,12 +79,27 @@
   color: #48b151;
 }
 
+/* Night Mode Styles for NavItems */
+.left-sidebar.night-mode .nav-item {
+  color: #fff; /* White color for nav items */
+}
+
+.left-sidebar.night-mode .nav-item:hover {
+  background-color: #444; /* Darker hover background in night mode */
+}
+
+.left-sidebar.night-mode .nav-item.active {
+  background-color: #e0f0e0;
+  color: #48b151;
+}
+
 .nav-item svg {
   margin-right: 10px;
   font-size: 13px;
   color: inherit;
 }
 
+/* Add List Button */
 .add-list-button {
   display: flex;
   align-items: center;
@@ -99,7 +125,21 @@
   color: #333;
 }
 
-/* Summary Task Button */
+/* Night Mode for Add List Button */
+.left-sidebar.night-mode .add-list-button {
+  background-color: #444; /* Dark background for button */
+  color: #fff; /* Light text color */
+}
+
+.left-sidebar.night-mode .add-list-button:hover {
+  background-color: #555; /* Slightly darker on hover */
+}
+
+.left-sidebar.night-mode .add-list-button svg {
+  color: #fff; /* White icons in night mode */
+}
+
+/* Task Summary */
 .task-summary {
   margin-top: -10px;
   text-align: center;
@@ -107,6 +147,11 @@
   border-radius: 8px;
   padding: 3px 16px 16px 16px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Night Mode for Task Summary */
+.left-sidebar.night-mode .task-summary {
+  background-color: #444; /* Darker background for task summary in night mode */
 }
 
 .summary-header {
@@ -132,6 +177,11 @@
   display: flex;
   justify-content: flex-start; /* Align to the left */
   margin-bottom: 10px;
+}
+
+/* Night Mode Task Count */
+.left-sidebar.night-mode .task-count {
+  color: #fff; /* White text for task count */
 }
 
 .task-chart {
@@ -189,5 +239,18 @@
 }
 
 .done-dot {
+  background-color: #1b5e20;
+}
+
+/* Night Mode Legend */
+.left-sidebar.night-mode .legend-item {
+  color: #fff; /* White color for legend items in night mode */
+}
+
+.left-sidebar.night-mode .pending-dot {
+  background-color: #4caf50;
+}
+
+.left-sidebar.night-mode .done-dot {
   background-color: #1b5e20;
 }

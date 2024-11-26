@@ -1,14 +1,21 @@
-// src/components/LeftSidebar/LeftSidebar.js
 import React from "react";
 import ProfileSection from "./ProfileSection";
 import NavItem from "./NavItem";
 import AddListButton from "./AddListButton";
-import TaskSummary from "./TaskSummary"; // Import TaskSummary here
+import TaskSummary from "./TaskSummary";
 import "../../styles/LeftSidebar.css";
 
-function LeftSidebar({ isVisible, activeTab, setActiveTab, tasks }) {
+function LeftSidebar({
+  isVisible,
+  activeTab,
+  setActiveTab,
+  tasks,
+  isNightMode,
+}) {
   return (
-    <aside className={`left-sidebar ${isVisible ? "visible" : ""}`}>
+    <aside
+      className={`left-sidebar ${isVisible ? "visible" : ""} ${isNightMode ? "night-mode" : ""}`}
+    >
       <ProfileSection />
       <div className="nav-items">
         <NavItem

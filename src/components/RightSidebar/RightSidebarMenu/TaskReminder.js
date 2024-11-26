@@ -34,7 +34,6 @@ const TaskReminder = ({
 
   return (
     <div className="task-reminder">
-      <label htmlFor="reminder">Set Reminder Time:</label>
       <input
         type="time"
         id="reminder"

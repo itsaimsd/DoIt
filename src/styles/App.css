@@ -1,7 +1,9 @@
-/* Import Roboto font globally */
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
-
 /* General Reset */
+:root {
+  --transition-duration: 0.3s;
+  --transition-easing: ease-in-out;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -15,8 +17,15 @@
   flex-direction: column;
   height: 100vh; /* Full viewport height */
   width: 100%;
-  background-color: #f5f5f5; /* Light background for a professional look */
+  background-color: #f5f5f5; /* Default light background */
   color: #333; /* Default text color */
+  transition: all 0.3s ease; /* Smooth transition for background and text color */
+}
+
+/* Night Mode */
+.app.night-mode {
+  background-color: #121212; /* Dark background for night mode */
+  color: white; /* Light text for night mode */
 }
 
 /* Content Area */
@@ -85,4 +94,17 @@
     opacity: 0; /* Fade out */
     transform: translate(-50%, -60%); /* Slightly above center again */
   }
+}
+
+/* Night Mode Specific Styling */
+.night-mode .notification {
+  background-color: #333; /* Dark background for notifications in night mode */
+}
+
+.night-mode .notification button {
+  background-color: #19692c; /* Darker button for night mode */
+}
+
+.night-mode .notification button:hover {
+  background-color: #14521c; /* Even darker green on hover */
 }

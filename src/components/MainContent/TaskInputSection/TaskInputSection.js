@@ -1,4 +1,3 @@
-// src/components/MainContent/TaskInputSection/TaskInputSection.js
 import React from "react";
 import TaskInput from "./TaskInput";
 import TaskList from "./TaskList";
@@ -11,21 +10,28 @@ const TaskInputSection = ({
   toggleFavorite,
   addTask,
   handleEditTask,
+  isNightMode, // Accept isNightMode prop
 }) => {
   const incompleteTasks = tasks.filter((task) => !task.completed);
   const completedTasks = tasks.filter((task) => task.completed);
 
   return (
-    <div className="task-input-section">
-      <TaskInput addTask={addTask} />
+    <div
+      className={`task-input-section ${isNightMode ? "night-mode" : ""}`} // Apply night-mode class
+    >
+      <TaskInput addTask={addTask} isNightMode={isNightMode} />
       <TaskList
         tasks={incompleteTasks}
         toggleComplete={toggleComplete}
         toggleFavorite={toggleFavorite}
-        handleEditTask={handleEditTask} // Pass the handler here
+        handleEditTask={handleEditTask}
+        isNightMode={isNightMode} // Pass isNightMode
       />
-
-      <CompletedTasks tasks={completedTasks} toggleComplete={toggleComplete} />
+      <CompletedTasks
+        tasks={completedTasks}
+        toggleComplete={toggleComplete}
+        isNightMode={isNightMode} // Pass isNightMode
+      />
     </div>
   );
 };

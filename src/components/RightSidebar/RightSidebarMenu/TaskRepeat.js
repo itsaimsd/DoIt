@@ -8,7 +8,7 @@ const TaskRepeat = ({ repeat, setRepeat, updateTask, taskId }) => {
   };
 
   return (
-    <div className="task-repeat"> 
+    <div className="task-repeat">
       <select
         id="repeat"
         value={repeat || "None"}

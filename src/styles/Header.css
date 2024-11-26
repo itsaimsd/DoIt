@@ -1,15 +1,14 @@
-/* Header.css */
-
+/* Base Header Styles */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 24px; /* Adjust padding as needed */
-  height: 60px; /* Fixed height for uniformity */
+  padding: 0 24px;
+  height: 60px;
   background-color: #ffffff;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid #e0e0e0;
-  position: fixed; /* Sticks the header to the top */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -58,8 +57,6 @@ button:focus {
 
 .logo-text {
   font-size: 25px;
-  align-items: center;
-  justify-content: center;
   font-weight: bold;
   color: #4caf50;
 }
@@ -77,6 +74,69 @@ button:focus {
   transition: color 0.3s;
 }
 
+.icon:hover {
+  color: #555;
+}
+
+/* Night Mode Overrides */
+.header.night-mode {
+  background-color: #333; /* Dark background for the header */
+  border-bottom: 1px solid #444; /* Darker border */
+}
+
+.header.night-mode .logo-text {
+  color: #4caf50; /* Light color for logo text */
+}
+
+.header.night-mode .menu-icon {
+  background-color: #444; /* Darker background for menu icon */
+  border: 1px solid #555; /* Darker border for the menu icon */
+}
+
+.header.night-mode .menu-icon span {
+  background-color: #ffffff; /* White lines for the menu icon */
+}
+
+.header.night-mode .icon {
+  color: #ffffff; /* White icons */
+}
+.header.night-mode .hamburger-icon {
+  color: #fff; /* White color for hamburger icon in night mode */
+}
+
+.header.night-mode .icon {
+  color: #fff; /* Change all icons color to white in night mode */
+}
+
+.header.night-mode .grid-icon {
+  fill: #ffffff; /* White fill color for grid icon in night mode */
+}
+.header.night-mode .icon:hover {
+  color: #ddd; /* Slightly lighter on hover */
+}
+
+.header.night-mode .grid-icon {
+  fill: #ffffff; /* Change the fill color of the grid icon to white in night mode */
+}
+
+.header.night-mode .grid-icon rect {
+  fill: #ffffff; /* Ensure the fill color of the rectangles inside the grid is white */
+}
+
+@keyframes iconScale {
+  0% {
+    transform: scale(0.9); /* Start at 90% size */
+  }
+  100% {
+    transform: scale(1); /* End at 100% size */
+  }
+}
+
+.header.night-mode .grid-icon {
+  animation: iconScale 0.3s ease-in-out; /* Scale icon animation */
+}
+
+/* Hover effect for icons */
 .icon:hover {
   color: #555;
 }

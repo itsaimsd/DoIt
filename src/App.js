@@ -10,6 +10,7 @@ function App() {
   const [isLeftSidebarVisible, setIsLeftSidebarVisible] = useState(false);
   const [isRightSidebarVisible, setIsRightSidebarVisible] = useState(false);
   const [activeTab, setActiveTab] = useState("Today");
+  const [isNightMode, setIsNightMode] = useState(false); // Night mode state
 
   const [tasks, setTasks] = useState(() => {
     try {
@@ -38,6 +39,8 @@ function App() {
 
   const toggleLeftSidebar = () => setIsLeftSidebarVisible((prev) => !prev);
 
+  const toggleNightMode = () => setIsNightMode((prev) => !prev); // Toggle night mode
+
   const addTask = (taskText) => {
     setTasks([
       ...tasks,
@@ -54,8 +57,8 @@ function App() {
   };
 
   const toggleFavorite = (id) => {
-    setTasks(
-      tasks.map((task) =>
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
         task.id === id ? { ...task, important: !task.important } : task
       )
     );
@@ -95,14 +98,19 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <Header toggleLeftSidebar={toggleLeftSidebar} />
+    <div className={`app ${isNightMode ? "night-mode" : "light-mode"}`}>
+      <Header
+        toggleLeftSidebar={toggleLeftSidebar}
+        toggleNightMode={toggleNightMode}
+        isNightMode={isNightMode}
+      />
       <div className="content">
         <LeftSidebar
           isVisible={isLeftSidebarVisible}
           activeTab={activeTab}
           setActiveTab={setActiveTab}
           tasks={tasks}
+          isNightMode={isNightMode}
         />
         <MainContent
           isLeftSidebarVisible={isLeftSidebarVisible}
@@ -113,6 +121,7 @@ function App() {
           addTask={addTask}
           activeTab={activeTab}
           handleEditTask={handleEditTask}
+          isNightMode={isNightMode}
         />
         <RightSidebar
           isVisible={isRightSidebarVisible}
@@ -124,6 +133,7 @@ function App() {
           updateTask={updateTask}
           handleSaveNotification={handleSaveNotification}
           playReminderRingtone={playReminderRingtone} // Pass ringtone handler
+          isNightMode={isNightMode}
         />
       </div>
 

@@ -1,13 +1,12 @@
-// Header.js
 import React from "react";
 import "../styles/Header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faMoon } from "@fortawesome/free-solid-svg-icons";
 
-const Header = ({ toggleLeftSidebar }) => {
+const Header = ({ toggleLeftSidebar, toggleNightMode, isNightMode }) => {
   return (
-    <header className="header">
-      <div className="header-left"> 
+    <header className={`header ${isNightMode ? "night-mode" : ""}`}>
+      <div className="header-left">
         <div className="menu-icon">
           <button onClick={toggleLeftSidebar} className="hamburger-icon">
             ☰
@@ -20,7 +19,7 @@ const Header = ({ toggleLeftSidebar }) => {
 
         {/* Custom Grid Icon as SVG for the 2x2 grid */}
         <svg
-          className="icon"
+          className={`icon grid-icon ${isNightMode ? "night-mode-icon" : ""}`}
           width="20"
           height="20"
           viewBox="0 0 24 24"
@@ -33,7 +32,11 @@ const Header = ({ toggleLeftSidebar }) => {
           <rect x="13" y="13" width="8" height="8" fill="#333" />
         </svg>
 
-        <FontAwesomeIcon icon={faMoon} className="icon" />
+        <FontAwesomeIcon
+          icon={faMoon}
+          className="icon"
+          onClick={toggleNightMode}
+        />
       </div>
     </header>
   );
