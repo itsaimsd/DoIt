@@ -75,10 +75,8 @@ function App() {
     setTimeout(() => setIsRightSidebarVisible(true), 50);
   };
   const openRightSidebar = () => {
-    setIsRightSidebarVisible(true); 
+    setIsRightSidebarVisible(true);
   };
-
- 
 
   const handleOkNotification = () => {
     setNotification(null);
@@ -139,7 +137,7 @@ function App() {
           updateTask={updateTask}
           handleSaveNotification={handleSaveNotification}
           playReminderRingtone={playReminderRingtone} // Pass ringtone handler
-          isNightMode={isNightMode} 
+          isNightMode={isNightMode}
         />
       </div>
 

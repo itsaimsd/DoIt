@@ -9,7 +9,7 @@ const TaskDueDate = ({ dueDate, setDueDate, updateTask, taskId }) => {
   };
 
   return (
-    <div className="task-due-date"> 
+    <div className="task-due-date">
       <input
         type="date"
         id="due-date"

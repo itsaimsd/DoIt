@@ -65,7 +65,9 @@ const RightSidebar = ({
             {expandedSection === "steps" ? "Hide Steps" : "Add Steps"}
           </button>
           {expandedSection === "steps" && (
-            <div className={`expandable expanded ${isNightMode ? "night-mode" : ""}`}>
+            <div
+              className={`expandable expanded ${isNightMode ? "night-mode" : ""}`}
+            >
               <AddStep
                 steps={task.steps || []}
                 setSteps={(newSteps) => {
@@ -79,6 +81,7 @@ const RightSidebar = ({
             </div>
           )}
         </div>
+
         <div className={`section ${isNightMode ? "night-mode" : ""}`}>
           <button
             onClick={() => toggleSection("dueDate")}
@@ -87,7 +90,9 @@ const RightSidebar = ({
             {expandedSection === "dueDate" ? "Hide Due Date" : "Add Due Date"}
           </button>
           {expandedSection === "dueDate" && (
-            <div className={`expandable expanded ${isNightMode ? "night-mode" : ""}`}>
+            <div
+              className={`expandable expanded ${isNightMode ? "night-mode" : ""}`}
+            >
               <TaskDueDate
                 dueDate={dueDate}
                 setDueDate={setDueDate}
@@ -97,6 +102,7 @@ const RightSidebar = ({
             </div>
           )}
         </div>
+
         <div className={`section ${isNightMode ? "night-mode" : ""}`}>
           <button
             onClick={() => toggleSection("reminder")}
@@ -105,7 +111,9 @@ const RightSidebar = ({
             {expandedSection === "reminder" ? "Hide Reminder" : "Set Reminder"}
           </button>
           {expandedSection === "reminder" && (
-            <div className={`expandable expanded ${isNightMode ? "night-mode" : ""}`}>
+            <div
+              className={`expandable expanded ${isNightMode ? "night-mode" : ""}`}
+            >
               <TaskReminder
                 reminder={reminder}
                 setReminder={setReminder}
@@ -116,6 +124,7 @@ const RightSidebar = ({
             </div>
           )}
         </div>
+
         <div className={`section ${isNightMode ? "night-mode" : ""}`}>
           <button
             onClick={() => toggleSection("repeat")}
@@ -124,7 +133,9 @@ const RightSidebar = ({
             {expandedSection === "repeat" ? "Hide Repeat" : "Set Repeat"}
           </button>
           {expandedSection === "repeat" && (
-            <div className={`expandable expanded ${isNightMode ? "night-mode" : ""}`}>
+            <div
+              className={`expandable expanded ${isNightMode ? "night-mode" : ""}`}
+            >
               <TaskRepeat
                 repeat={repeat}
                 setRepeat={setRepeat}
@@ -142,7 +153,9 @@ const RightSidebar = ({
             {expandedSection === "notes" ? "Hide Notes" : "Add Notes"}
           </button>
           {expandedSection === "notes" && (
-            <div className={`expandable expanded ${isNightMode ? "night-mode" : ""}`}>
+            <div
+              className={`expandable expanded ${isNightMode ? "night-mode" : ""}`}
+            >
               <TaskNotes
                 notes={notes}
                 setNotes={setNotes}
