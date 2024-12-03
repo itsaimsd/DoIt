@@ -1,3 +1,88 @@
+/* src/styles/MainContent.css */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Ensure these elements take the full viewport height */
+  overflow: hidden; /* Prevent any unnecessary scrolling on the root level */
+}
+
+* {
+  box-sizing: border-box; /* Include padding/border in element size */
+}
+
+.main-content {
+  padding: 80px 24px 24px;
+  background-color: #f9f9f9;
+  color: #333;
+  transition:
+    margin-left 0.3s ease-in-out,
+    margin-right 0.3s ease-in-out;
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Night Mode Styles for MainContent */
+.main-content.night-mode {
+  background-color: #2c2f33; /* Dark background for night mode */
+  color: #fff; /* Light text color for night mode */
+}
+
+/* Adjust content layout when sidebars are visible */
+.main-content.shifted {
+  margin-left: 256px; /* Shift by the width of the LeftSidebar */
+}
+
+.main-content.shifted-left {
+  margin-right: 287px;
+}
+
+/* Add Task Button Styles */
+.add-task-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-task-button:hover {
+  background-color: #45a049;
+}
+
+/* Night Mode Styles for Add Task Button */
+.add-task-button.night-mode {
+  background-color: #6d6d6d; /* Dark button for night mode */
+  color: #fff; /* Light text for button */
+}
+
+.add-task-button.night-mode:hover {
+  background-color: #555; /* Darker button on hover */
+}
+
+/* Adjust styles for input and textarea in night mode */
+.main-content input,
+.main-content textarea {
+  /* Light input fields */
+  color: #333; /* Dark text for input fields */
+}
+
+/* Input fields in night mode */
+.main-content.night-mode input,
+.main-content.night-mode textarea {
+  background-color: #555; /* Dark input fields */
+  color: #fff; /* Light text for input fields */
+}
+
+
+
+
+// taskinput.css
+
 /* Task Input Section (adjusts position when sidebar is open) */
 .task-input-section {
   display: flex;
@@ -24,7 +109,7 @@
   color: #333;
   margin-bottom: 8px;
   align-self: flex-start;
-  cursor: pointer;
+  cursor: pointer; 
 }
 
 /* Night Mode Styling for To-Do Dropdown */

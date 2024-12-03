@@ -4,5 +4,22 @@
   align-items: center;
   width: calc(100% - 45px);
   max-width: 1200px;
-  margin: 0 20px;
+  margin: 0 20px; 
+}
+
+
+/* Adjust container width for mobile */
+@media (max-width: 768px) {
+  .task-input-section {
+    width: calc(100% - 40px); /* Keep the width same on tablet */
+    padding: 0 10px; /* Add padding for more space around the content */
+    
+  }
+}
+
+@media (max-width: 480px) {
+  .task-input-section { 
+    width: 100%; /* Increase the width to 100% on small mobile devices */
+    padding: 0 10px; /* Optional: Add some padding to avoid content touching screen edges */
+  }
 }
