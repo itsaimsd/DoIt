@@ -12,7 +12,7 @@ const Header = ({ toggleLeftSidebar, toggleNightMode, isNightMode }) => {
             ☰
           </button>
         </div>
-        <span className="logo-text">Plancio</span>
+        <span className="logo-text">DoIt</span>
       </div>
       <div className="header-right">
         <FontAwesomeIcon icon={faSearch} className="icon" />
