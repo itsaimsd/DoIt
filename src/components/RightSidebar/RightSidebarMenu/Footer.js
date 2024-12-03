@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faTrash } from "@fortawesome/free-solid-svg-icons";
 import "../../../styles/rightsidebar/Footer.css";
-
+// this is footer
 const Footer = ({
   task,
   closeSidebar,
