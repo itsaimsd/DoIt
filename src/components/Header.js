@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/Header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faMoon } from "@fortawesome/free-solid-svg-icons";
-
+// header
 const Header = ({ toggleLeftSidebar, toggleNightMode, isNightMode }) => {
   return (
     <header className={`header ${isNightMode ? "night-mode" : ""}`}>
